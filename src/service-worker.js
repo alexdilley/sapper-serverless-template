@@ -1,5 +1,5 @@
 /* eslint-env worker, serviceworker */
-/* eslint-disable no-restricted-globals, no-unused-vars */
+/* eslint-disable no-restricted-globals, no-unused-vars, import/no-unresolved */
 import { timestamp, files, shell, routes } from '@sapper/service-worker';
 
 const ASSETS = `cache${timestamp}`;

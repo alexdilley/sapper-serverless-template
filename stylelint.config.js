@@ -22,5 +22,7 @@ module.exports = {
         ],
       },
     ],
+    // Allow CSS module keywords beginning with `@`.
+    'at-rule-no-unknown': null,
   },
 };

@@ -10,20 +10,13 @@
   export let posts;
 </script>
 
-<style>
-  ul {
-    margin: 0 0 1em 0;
-    line-height: 1.5;
-  }
-</style>
-
 <svelte:head>
   <title>Blog</title>
 </svelte:head>
 
 <h1>Recent posts</h1>
 
-<ul>
+<ul class="mb-4 list-inside list-disc">
   {#each posts as post}
     <!--
       We're using the non-standard `rel=prefetch` attribute to tell Sapper to
@@ -31,7 +24,9 @@
       taps it, instead of waiting for the 'click' event.
     -->
     <li>
-      <a rel="prefetch" href="blog/{post.slug}">{post.title}</a>
+      <a rel="prefetch" href="blog/{post.slug}" class="underline">
+        {post.title}
+      </a>
     </li>
   {/each}
 </ul>

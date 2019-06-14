@@ -25,29 +25,33 @@
     :global(...) modifier to target all elements inside .content.
   */
   .content :global(h2) {
+    @apply font-medium;
+
     font-size: 1.4em;
-    font-weight: 500;
+  }
+
+  .content :global(p) {
+    @apply my-4;
+  }
+
+  .content :global(a) {
+    @apply underline;
   }
 
   .content :global(pre) {
-    padding: 0.5em;
-    overflow-x: auto;
-    background-color: #f9f9f9;
-    border-radius: 2px;
-    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
+    @apply p-2 my-4 overflow-x-auto bg-gray-100 rounded-sm shadow-inner;
   }
 
   .content :global(ul) {
-    line-height: 1.5;
+    @apply list-inside list-disc;
   }
 
   .content :global(li) {
-    margin: 0 0 0.5em 0;
+    @apply mb-2;
   }
 
   .content :global(pre) :global(code) {
-    padding: 0;
-    background-color: transparent;
+    @apply p-0 whitespace-pre-line bg-transparent;
   }
 </style>
 

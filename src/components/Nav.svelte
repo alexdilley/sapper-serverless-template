@@ -4,52 +4,39 @@
 
 <style>
   nav {
-    padding: 0 1em;
-    font-weight: 300;
-    border-bottom: 1px solid rgba(255, 62, 0, 0.1);
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-  }
-
-  /* clearfix */
-  ul::after {
-    display: block;
-    clear: both;
-    content: '';
+    border-color: color-mod(theme('colors.red.500') a(0.1));
   }
 
   li {
-    display: block;
-    float: left;
+    @apply block float-left;
   }
 
   .selected {
-    position: relative;
-    display: inline-block;
+    @apply relative inline-block;
   }
 
   .selected::after {
-    position: absolute;
+    @apply absolute block bg-red-500;
+
     bottom: -1px;
-    display: block;
     width: calc(100% - 1em);
     height: 2px;
     content: '';
-    background-color: rgb(255, 62, 0);
   }
 
   a {
-    display: block;
-    padding: 1em 0.5em;
-    text-decoration: none;
+    @apply block px-2 py-3;
+  }
+
+  @screen xs {
+    a {
+      @apply py-4;
+    }
   }
 </style>
 
-<nav>
-  <ul>
+<nav class="px-4 font-light border-b">
+  <ul class="clearfix">
     <li>
       <a class={segment === undefined ? 'selected' : ''} href=".">home</a>
     </li>
