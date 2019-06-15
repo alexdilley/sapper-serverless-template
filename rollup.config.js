@@ -1,14 +1,18 @@
+import path from 'path';
+import commonjs from 'rollup-plugin-commonjs';
+import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
-import commonjs from 'rollup-plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup';
-import sveltePreprocessPostcss from 'svelte-preprocess-postcss';
+import sveltePreprocess from 'svelte-preprocess';
 import pkg from './package.json';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
+
+const preprocess = sveltePreprocess({ postcss: true });
 
 // eslint-disable-next-line no-shadow
 const onwarn = (warning, onwarn) =>
@@ -28,8 +32,8 @@ export default {
       svelte({
         dev,
         hydratable: true,
+        preprocess,
         emitCss: true,
-        preprocess: { style: sveltePreprocessPostcss() },
       }),
       resolve({ browser: true }),
       commonjs(),
@@ -50,8 +54,9 @@ export default {
       svelte({
         generate: 'ssr',
         dev,
-        preprocess: { style: sveltePreprocessPostcss() },
+        preprocess,
       }),
+      postcss({ extract: path.resolve(__dirname, './static/index.css') }),
       resolve(),
       commonjs(),
     ],
