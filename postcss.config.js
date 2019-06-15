@@ -12,6 +12,9 @@ module.exports = {
         'color-mod-function': true,
       },
     }),
+    require('cssnano')({
+      preset: 'default',
+    }),
     ...(process.env.NODE_ENV !== 'development' ? [purgecss] : []),
   ],
 };
