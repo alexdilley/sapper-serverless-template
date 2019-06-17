@@ -12,6 +12,21 @@ Resources:
       Variables:
         ServerlessExpressLambdaFunctionName: !Ref YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME
 
+  ApiGatewayDomainName:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      DomainName: YOUR_HOSTNAME
+      CertificateArn: !Sub
+        - arn:${AWS::Partition}:acm:us-east-1:${AWS::AccountId}:certificate/${CertificateId}
+        - CertificateId: YOUR_SSL_CERTIFICATE_ID
+
+  ApiGatewayBasePathMapping:
+    Type: AWS::ApiGateway::BasePathMapping
+    Properties:
+      DomainName: !Ref ApiGatewayDomainName
+      RestApiId: !Ref ApiGatewayApi
+      Stage: !Ref ApiGatewayApi.Stage
+
   LambdaExecutionRole:
     Type: AWS::IAM::Role
     Properties:

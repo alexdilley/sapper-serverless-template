@@ -6,7 +6,12 @@ Boilerplate template for a universal Sapper app running on top of AWS Lambda and
 
 ```sh
 npm install
-npm run config -- --account-id="<accountId>" --bucket-name="<bucketName>" [--region="<region>" --function-name="<functionName>"]
+npm run config -- \
+  --account-id="<accountId>" \
+  --bucket-name="<bucketName>" \
+  --hostname="<hostname>" \
+  --certificate-id="<certificateId>" \
+  [--region="<region>" --function-name="<functionName>"]
 npm run setup
 ```
 

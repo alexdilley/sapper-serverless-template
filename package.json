@@ -7,7 +7,9 @@
     "region": "YOUR_AWS_REGION",
     "cloudFormationStackName": "AwsServerlessExpressStack",
     "functionName": "YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME",
-    "accountId": "YOUR_ACCOUNT_ID"
+    "accountId": "YOUR_ACCOUNT_ID",
+    "hostname": "YOUR_HOSTNAME",
+    "certificateId": "YOUR_SSL_CERTIFICATE_ID"
   },
   "scripts": {
     "postinstall": "cd functions/http/get-index && npm install",

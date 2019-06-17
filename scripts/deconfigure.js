@@ -23,6 +23,14 @@ modifyFiles(
       replacement: 'YOUR_UNIQUE_BUCKET_NAME',
     },
     {
+      regexp: new RegExp(config.hostname, 'g'),
+      replacement: 'YOUR_HOSTNAME',
+    },
+    {
+      regexp: new RegExp(config.certificateId, 'g'),
+      replacement: 'YOUR_SSL_CERTIFICATE_ID',
+    },
+    {
       regexp: new RegExp(config.functionName, 'g'),
       replacement: 'YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME',
     },

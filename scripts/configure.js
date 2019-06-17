@@ -28,8 +28,9 @@ if (minimistHasBeenInstalled) {
 
 const accountId = args['account-id'];
 const bucketName = args['bucket-name'];
+const certificateId = args['certificate-id'];
 const functionName = args['function-name'];
-const { region } = args;
+const { hostname, region } = args;
 
 if (!accountId || accountId.length !== 12) {
   // eslint-disable-next-line no-console
@@ -61,6 +62,14 @@ modifyFiles(
     {
       regexp: /YOUR_UNIQUE_BUCKET_NAME/g,
       replacement: bucketName,
+    },
+    {
+      regexp: /YOUR_HOSTNAME/g,
+      replacement: hostname,
+    },
+    {
+      regexp: /YOUR_SSL_CERTIFICATE_ID/g,
+      replacement: certificateId,
     },
     {
       regexp: /YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME/g,
