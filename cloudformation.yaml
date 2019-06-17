@@ -8,6 +8,7 @@ Resources:
     Properties:
       DefinitionUri: ./simple-proxy-api.yaml
       StageName: prod
+      MinimumCompressionSize: 0
       Variables:
         ServerlessExpressLambdaFunctionName: !Ref YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME
 
