@@ -2,7 +2,15 @@
   "name": "TODO",
   "description": "TODO",
   "version": "0.0.1",
+  "config": {
+    "s3BucketName": "YOUR_UNIQUE_BUCKET_NAME",
+    "region": "YOUR_AWS_REGION",
+    "cloudFormationStackName": "AwsServerlessExpressStack",
+    "functionName": "YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME",
+    "accountId": "YOUR_ACCOUNT_ID"
+  },
   "scripts": {
+    "postinstall": "cd functions/http/get-index && npm install",
     "dev": "sapper dev",
     "lint:eslint": "eslint --fix",
     "lint:markdownlint": "markdownlint",
@@ -14,11 +22,22 @@
     "lint:all:stylelint": "yarn lint:stylelint \"src/**/*.{svelte,css}\"",
     "lint": "run-s lint:all:*",
     "build": "sapper build",
+    "postbuild": "rsync -aqr --exclude='client' __sapper__/build functions/http/get-index/__sapper__/ --delete",
     "export": "sapper export",
-    "start": "node __sapper__/build",
+    "start": "NODE_ENV=development node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "config": "node ./scripts/configure.js",
+    "deconfig": "node ./scripts/deconfigure.js",
+    "create-bucket": "aws s3 mb s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
+    "delete-bucket": "aws s3 rb s3://$npm_package_config_s3BucketName --region $npm_package_config_region",
+    "prepackage": "npm run build",
+    "package": "aws cloudformation package --template ./cloudformation.yaml --s3-bucket $npm_package_config_s3BucketName --output-template packaged-sam.yaml --region $npm_package_config_region",
+    "deploy": "aws cloudformation deploy --template-file packaged-sam.yaml --stack-name $npm_package_config_cloudFormationStackName --capabilities CAPABILITY_IAM --region $npm_package_config_region",
+    "package-deploy": "run-s package deploy",
+    "delete-stack": "aws cloudformation delete-stack --stack-name $npm_package_config_cloudFormationStackName --region $npm_package_config_region",
+    "setup": "npm install && (aws s3api get-bucket-location --bucket $npm_package_config_s3BucketName --region $npm_package_config_region || npm run create-bucket) && npm run package-deploy"
   },
   "dependencies": {
     "compression": "^1.7.1",

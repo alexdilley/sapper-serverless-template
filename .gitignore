@@ -1,6 +1,5 @@
-.DS_Store
 node_modules
-yarn-error.log
+__sapper__
+packaged-sam.yaml
 /cypress/screenshots/
-/__sapper__/
 /static/index.css

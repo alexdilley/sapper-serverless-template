@@ -1,0 +1,8 @@
+{
+  "name": "get-index",
+  "version": "0.0.1",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.6",
+    "polka": "^0.5.0"
+  }
+}

@@ -6,7 +6,9 @@ module.exports = {
   env: {
     es6: true,
     browser: true,
-    'cypress/globals': true,
   },
-  plugins: ['cypress'],
+  plugins: ['svelte3'],
+  rules: {
+    'import/no-mutable-exports': 'off', // Svelte props
+  },
 };
