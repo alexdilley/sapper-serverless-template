@@ -19,7 +19,7 @@
 <figure class="mb-4">
   <img
     alt="Borat"
-    src="great-success.png"
+    src="assets/great-success.png"
     class="inline-block w-full mb-4 align-baseline"
   />
   <figcaption>HIGH FIVE!</figcaption>

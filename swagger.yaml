@@ -1,0 +1,48 @@
+---
+swagger: 2.0
+info:
+  title: AwsServerlessExpressApi
+paths:
+  /:
+    get:
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri: arn:aws:apigateway:YOUR_AWS_REGION:lambda:path/2015-03-31/functions/arn:aws:lambda:YOUR_AWS_REGION:YOUR_ACCOUNT_ID:function:${stageVariables.ServerlessExpressLambdaFunctionName}/invocations
+  /{proxy+}:
+    get:
+      parameters:
+        - name: proxy
+          in: path
+          required: true
+          type: string
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri: arn:aws:apigateway:YOUR_AWS_REGION:lambda:path/2015-03-31/functions/arn:aws:lambda:YOUR_AWS_REGION:YOUR_ACCOUNT_ID:function:${stageVariables.ServerlessExpressLambdaFunctionName}/invocations
+  /assets/{proxy+}:
+    get:
+      parameters:
+        - name: proxy
+          in: path
+          required: true
+          type: string
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: http://YOUR_UNIQUE_BUCKET_NAME.s3.amazonaws.com/assets/{proxy}
+        requestParameters:
+          integration.request.path.proxy: method.request.path.proxy
+  /client/{proxy+}:
+    get:
+      parameters:
+        - name: proxy
+          in: path
+          required: true
+          type: string
+      x-amazon-apigateway-integration:
+        type: http_proxy
+        httpMethod: GET
+        uri: http://YOUR_UNIQUE_BUCKET_NAME.s3.amazonaws.com/client/{proxy}
+        requestParameters:
+          integration.request.path.proxy: method.request.path.proxy

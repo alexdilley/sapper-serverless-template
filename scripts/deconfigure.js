@@ -8,7 +8,7 @@ const packageJson = require('../package.json');
 const { config } = packageJson;
 
 modifyFiles(
-  ['./simple-proxy-api.yaml', './package.json', './cloudformation.yaml'],
+  ['./swagger.yaml', './package.json', './cloudformation.yaml'],
   [
     {
       regexp: new RegExp(config.accountId, 'g'),

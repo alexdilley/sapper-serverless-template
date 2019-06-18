@@ -6,7 +6,7 @@ Resources:
   ApiGatewayApi:
     Type: AWS::Serverless::Api
     Properties:
-      DefinitionUri: ./simple-proxy-api.yaml
+      DefinitionUri: ./swagger.yaml
       StageName: prod
       MinimumCompressionSize: 0
       Variables:
