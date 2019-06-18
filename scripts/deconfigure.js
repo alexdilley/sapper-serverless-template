@@ -19,12 +19,12 @@ modifyFiles(
       replacement: 'YOUR_AWS_REGION',
     },
     {
-      regexp: new RegExp(config.s3BucketName, 'g'),
-      replacement: 'YOUR_UNIQUE_BUCKET_NAME',
-    },
-    {
       regexp: new RegExp(config.hostname, 'g'),
       replacement: 'YOUR_HOSTNAME',
+    },
+    {
+      regexp: new RegExp(config.s3BucketName, 'g'),
+      replacement: 'YOUR_UNIQUE_BUCKET_NAME',
     },
     {
       regexp: new RegExp(config.certificateId, 'g'),
