@@ -28,6 +28,12 @@ npm run build
 API_BASE_URL=<APIG URL> npm run start
 ```
 
+## Known issues
+
+- 🐛 [invalid client asset URLs](https://github.com/sveltejs/sapper/issues/747)
+- 😖 [hack](https://github.com/alexdilley/sapper-serverless-template/blob/master/rollup.config.js#L51): Lambda can only `fetch` from non-local/absolute URLs
+- 🤷 refreshing pages under `/blog` in sandbox doesn't return response
+
 ## References
 
 - [aws-serverless-express/basic-starter](https://github.com/awslabs/aws-serverless-express/tree/master/examples/basic-starter)
