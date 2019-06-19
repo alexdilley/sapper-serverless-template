@@ -48,6 +48,7 @@ export default {
     output: config.server.output(),
     plugins: [
       replace({
+        'http://127.0.0.1': `https://YOUR_HOSTNAME`,
         'process.browser': false,
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

@@ -8,7 +8,8 @@ paths:
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
-        uri: arn:aws:apigateway:YOUR_AWS_REGION:lambda:path/2015-03-31/functions/arn:aws:lambda:YOUR_AWS_REGION:YOUR_ACCOUNT_ID:function:${stageVariables.ServerlessExpressLambdaFunctionName}/invocations
+        uri:
+          Fn::Sub: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetIndexFunction.Arn}/invocations
   /{proxy+}:
     get:
       parameters:
@@ -19,7 +20,8 @@ paths:
       x-amazon-apigateway-integration:
         type: aws_proxy
         httpMethod: POST
-        uri: arn:aws:apigateway:YOUR_AWS_REGION:lambda:path/2015-03-31/functions/arn:aws:lambda:YOUR_AWS_REGION:YOUR_ACCOUNT_ID:function:${stageVariables.ServerlessExpressLambdaFunctionName}/invocations
+        uri:
+          Fn::Sub: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetIndexFunction.Arn}/invocations
   /assets/{proxy+}:
     get:
       parameters:
@@ -46,3 +48,22 @@ paths:
         uri: http://YOUR_UNIQUE_BUCKET_NAME.s3.amazonaws.com/client/{proxy}
         requestParameters:
           integration.request.path.proxy: method.request.path.proxy
+  /api/posts:
+    get:
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          Fn::Sub: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPostsFunction.Arn}/invocations
+  /api/posts/{slug}:
+    get:
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          type: string
+      x-amazon-apigateway-integration:
+        type: aws_proxy
+        httpMethod: POST
+        uri:
+          Fn::Sub: arn:${AWS::Partition}:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPostFunction.Arn}/invocations

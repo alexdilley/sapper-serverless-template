@@ -6,7 +6,6 @@
     "s3BucketName": "YOUR_UNIQUE_BUCKET_NAME",
     "region": "YOUR_AWS_REGION",
     "cloudFormationStackName": "AwsServerlessExpressStack",
-    "functionName": "YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME",
     "accountId": "YOUR_ACCOUNT_ID",
     "hostname": "YOUR_HOSTNAME",
     "certificateId": "YOUR_SSL_CERTIFICATE_ID"
@@ -46,6 +45,7 @@
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "http-proxy-middleware": "^0.19.1",
     "polka": "^0.5.0",
     "sirv": "^0.4.0"
   },

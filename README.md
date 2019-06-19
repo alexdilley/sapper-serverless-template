@@ -11,8 +11,21 @@ npm run config -- \
   --bucket-name="<bucketName>" \
   --hostname="<hostname>" \
   --certificate-id="<certificateId>" \
-  [--region="<region>" --function-name="<functionName>"]
+  [--region="<region>"]
 npm run setup
+```
+
+## Local sandbox
+
+```sh
+API_BASE_URL=<APIG URL> npm run dev
+```
+
+or:
+
+```sh
+npm run build
+API_BASE_URL=<APIG URL> npm run start
 ```
 
 ## References

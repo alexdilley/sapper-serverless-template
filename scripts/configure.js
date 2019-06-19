@@ -15,11 +15,8 @@ if (!fs.existsSync('./node_modules/minimist')) {
 }
 
 const args = minimist(process.argv.slice(2), {
-  string: ['account-id', 'bucket-name', 'function-name', 'region'],
-  default: {
-    region: 'us-east-1',
-    'function-name': 'AwsServerlessExpressFunction',
-  },
+  string: ['account-id', 'bucket-name', 'certificate-id', 'region'],
+  default: { region: 'us-east-1' },
 });
 
 if (minimistHasBeenInstalled) {
@@ -29,7 +26,6 @@ if (minimistHasBeenInstalled) {
 const accountId = args['account-id'];
 const bucketName = args['bucket-name'];
 const certificateId = args['certificate-id'];
-const functionName = args['function-name'];
 const { hostname, region } = args;
 
 if (!accountId || accountId.length !== 12) {
@@ -49,7 +45,12 @@ if (!bucketName) {
 }
 
 modifyFiles(
-  ['./swagger.yaml', './package.json', './cloudformation.yaml'],
+  [
+    './swagger.yaml',
+    './package.json',
+    './cloudformation.yaml',
+    './rollup.config.js',
+  ],
   [
     {
       regexp: /YOUR_ACCOUNT_ID/g,
@@ -70,10 +71,6 @@ modifyFiles(
     {
       regexp: /YOUR_SSL_CERTIFICATE_ID/g,
       replacement: certificateId,
-    },
-    {
-      regexp: /YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME/g,
-      replacement: functionName,
     },
   ]
 );

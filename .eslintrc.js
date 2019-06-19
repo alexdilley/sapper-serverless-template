@@ -2,7 +2,6 @@ module.exports = {
   root: true,
   extends: ['airbnb-base', 'prettier'],
   parserOptions: {
-    ecmaVersion: 2015,
     sourceType: 'script',
   },
   env: {
@@ -19,6 +18,16 @@ module.exports = {
       files: ['rollup.config.js'],
       parserOptions: {
         sourceType: 'module',
+      },
+    },
+    {
+      files: ['functions/**/*'],
+      rules: {
+        // `console` is used for logging in Lambda functions.
+        'no-console': 'off',
+        // Lambda Layers are extracted to `/opt`.
+        'import/no-absolute-path': 'off',
+        'import/no-unresolved': 'off',
       },
     },
   ],

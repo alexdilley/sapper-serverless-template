@@ -8,7 +8,12 @@ const packageJson = require('../package.json');
 const { config } = packageJson;
 
 modifyFiles(
-  ['./swagger.yaml', './package.json', './cloudformation.yaml'],
+  [
+    './swagger.yaml',
+    './package.json',
+    './cloudformation.yaml',
+    './rollup.config.js',
+  ],
   [
     {
       regexp: new RegExp(config.accountId, 'g'),
@@ -29,10 +34,6 @@ modifyFiles(
     {
       regexp: new RegExp(config.certificateId, 'g'),
       replacement: 'YOUR_SSL_CERTIFICATE_ID',
-    },
-    {
-      regexp: new RegExp(config.functionName, 'g'),
-      replacement: 'YOUR_SERVERLESS_EXPRESS_LAMBDA_FUNCTION_NAME',
     },
   ]
 );
