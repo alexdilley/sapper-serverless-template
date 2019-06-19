@@ -12,6 +12,11 @@
 
 <svelte:head>
   <title>Sapper serverless project template</title>
+  <meta
+    name="description"
+    content="Boilerplate template for a universal Sapper app running on top of
+    AWS Lambda and Amazon API Gateway."
+  />
 </svelte:head>
 
 <h1 class="mb-8 font-bold text-4xl xs:text-6xl uppercase">Great success!</h1>
