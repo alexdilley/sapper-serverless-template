@@ -22,7 +22,7 @@
     "lint:all:prettier": "yarn lint:prettier \"**/*.{js,json,css,svelte,html,md}\"",
     "lint:all:stylelint": "yarn lint:stylelint \"src/**/*.{svelte,css}\"",
     "lint": "run-s lint:all:*",
-    "build": "sapper build",
+    "build": "NODE_ENV=production sapper build",
     "postbuild": "rsync -aqr --exclude='client' __sapper__/build functions/http/get-index/__sapper__/ --delete",
     "export": "sapper export",
     "start": "node __sapper__/build",
