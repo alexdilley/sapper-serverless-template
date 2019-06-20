@@ -57,7 +57,10 @@ export default {
         dev,
         preprocess,
       }),
-      postcss({ extract: path.resolve(__dirname, './static/index.css') }),
+      postcss({
+        minimize: true,
+        extract: path.resolve(__dirname, './static/index.css'),
+      }),
       resolve(),
       commonjs(),
     ],
