@@ -11,4 +11,8 @@ module.exports = {
   rules: {
     'import/no-mutable-exports': 'off', // Svelte props
   },
+  settings: {
+    // Avoid pre-processor fisticuffs.
+    'svelte3/ignore-styles': true,
+  },
 };
