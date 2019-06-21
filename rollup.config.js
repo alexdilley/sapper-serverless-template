@@ -1,4 +1,5 @@
 import path from 'path';
+import alias from 'rollup-plugin-alias';
 import commonjs from 'rollup-plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
 import resolve from 'rollup-plugin-node-resolve';
@@ -12,6 +13,10 @@ import pkg from './package.json';
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 
+const aliases = alias({
+  resolve: ['.css', '.js', '.svelte'],
+  '@': path.resolve(__dirname, 'src'),
+});
 const preprocess = sveltePreprocess({ postcss: true });
 
 // eslint-disable-next-line no-shadow
@@ -25,6 +30,7 @@ export default {
     input: config.client.input(),
     output: config.client.output(),
     plugins: [
+      aliases,
       replace({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
@@ -47,6 +53,7 @@ export default {
     input: config.server.input(),
     output: config.server.output(),
     plugins: [
+      aliases,
       replace({
         'http://127.0.0.1': `https://YOUR_HOSTNAME`,
         'process.browser': false,
@@ -76,6 +83,7 @@ export default {
     input: config.serviceworker.input(),
     output: config.serviceworker.output(),
     plugins: [
+      aliases,
       resolve(),
       replace({
         'process.browser': true,

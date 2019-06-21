@@ -1,6 +1,6 @@
 import polka from 'polka';
 import * as sapper from '@sapper/server';
-import './styles/index.css';
+import '@/styles/index';
 
 const { API_BASE_URL, AWS_EXECUTION_ENV, PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
