@@ -24,34 +24,36 @@
     going to appear inside the {{{post.html}}} block, so we have to use the
     :global(...) modifier to target all elements inside .content.
   */
-  .content :global(h2) {
-    @apply font-medium;
+  .content {
+    & :global(h2) {
+      @apply font-medium;
 
-    font-size: 1.4em;
-  }
+      font-size: 1.4em;
+    }
 
-  .content :global(p) {
-    @apply my-4;
-  }
+    & :global(p) {
+      @apply my-4;
+    }
 
-  .content :global(a) {
-    @apply underline;
-  }
+    & :global(a) {
+      @apply underline;
+    }
 
-  .content :global(pre) {
-    @apply p-2 my-4 overflow-x-auto bg-gray-100 rounded-sm shadow-inner;
-  }
+    & :global(pre) {
+      @apply p-2 my-4 overflow-x-auto bg-gray-100 rounded-sm shadow-inner;
+    }
 
-  .content :global(ul) {
-    @apply list-inside list-disc;
-  }
+    & :global(ul) {
+      @apply list-inside list-disc;
+    }
 
-  .content :global(li) {
-    @apply mb-2;
-  }
+    & :global(li) {
+      @apply mb-2;
+    }
 
-  .content :global(pre) :global(code) {
-    @apply p-0 whitespace-pre-line bg-transparent;
+    & :global(pre) :global(code) {
+      @apply p-0 whitespace-pre-line bg-transparent;
+    }
   }
 </style>
 

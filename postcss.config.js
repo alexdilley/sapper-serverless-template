@@ -13,6 +13,7 @@ module.exports = {
       importFrom: ['./src/styles/variables.js'],
       features: {
         'color-mod-function': true,
+        'nesting-rules': true,
       },
     }),
     ...(process.env.NODE_ENV !== 'development' ? [purgecss] : []),

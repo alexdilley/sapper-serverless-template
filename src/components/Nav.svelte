@@ -13,15 +13,15 @@
 
   .selected {
     @apply relative inline-block;
-  }
 
-  .selected::after {
-    @apply absolute block bg-red-500;
+    &::after {
+      @apply absolute block bg-red-500;
 
-    bottom: -1px;
-    width: calc(100% - 1em);
-    height: 2px;
-    content: '';
+      bottom: -1px;
+      width: calc(100% - 1em);
+      height: 2px;
+      content: '';
+    }
   }
 
   a {
