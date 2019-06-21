@@ -2,6 +2,8 @@
   "name": "TODO",
   "description": "TODO",
   "version": "0.0.1",
+  "private": true,
+  "license": "UNLICENSED",
   "config": {
     "s3BucketName": "YOUR_UNIQUE_BUCKET_NAME",
     "region": "YOUR_AWS_REGION",
