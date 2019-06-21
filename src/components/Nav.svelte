@@ -4,7 +4,7 @@
 
 <style>
   nav {
-    border-color: color-mod(theme('colors.red.500') a(0.1));
+    border-color: color-mod(var(--theme) a(0.1));
   }
 
   li {

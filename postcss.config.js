@@ -10,6 +10,7 @@ module.exports = {
     require('postcss-import'),
     require('tailwindcss'),
     require('postcss-preset-env')({
+      importFrom: ['./src/styles/variables.js'],
       features: {
         'color-mod-function': true,
       },
