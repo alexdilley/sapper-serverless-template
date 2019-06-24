@@ -15,7 +15,7 @@ const dev = mode === 'development';
 
 const extensions = ['.mjs', '.js', '.svelte', '.css'];
 const aliases = alias({
-  resolve: extensions,
+  resolve: extensions.reduce((acc, ext) => [...acc, ext, `/index${ext}`], []),
   '@': path.resolve(__dirname, 'src'),
 });
 const preprocess = sveltePreprocess({ postcss: true });
