@@ -13,8 +13,9 @@ import pkg from './package.json';
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 
+const extensions = ['.mjs', '.js', '.svelte', '.css'];
 const aliases = alias({
-  resolve: ['.css', '.js', '.svelte'],
+  resolve: extensions,
   '@': path.resolve(__dirname, 'src'),
 });
 const preprocess = sveltePreprocess({ postcss: true });
@@ -41,7 +42,7 @@ export default {
         preprocess,
         emitCss: true,
       }),
-      resolve({ browser: true }),
+      resolve({ browser: true, extensions }),
       commonjs(),
       !dev && terser({ module: true }),
     ],
@@ -68,7 +69,7 @@ export default {
         minimize: true,
         extract: path.resolve(__dirname, './static/index.css'),
       }),
-      resolve(),
+      resolve({ extensions }),
       commonjs(),
     ],
     external: Object.keys(pkg.dependencies).concat(
@@ -84,7 +85,7 @@ export default {
     output: config.serviceworker.output(),
     plugins: [
       aliases,
-      resolve(),
+      resolve({ extensions }),
       replace({
         'process.browser': true,
         'process.env.NODE_ENV': JSON.stringify(mode),
