@@ -80,7 +80,7 @@
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-recess-order": "^2.0.2",
     "stylelint-config-standard": "^18.3.0",
-    "svelte": "^3.5.3",
+    "svelte": "^3.49.0",
     "svelte-preprocess": "^2.12.0",
     "tailwindcss": "^1.0.4"
   }
